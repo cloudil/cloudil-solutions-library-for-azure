@@ -1,9 +1,9 @@
-# Setting up federation in CloudIL through Azure AD
+# Setting up federation in Nebius through Azure AD
 
-This repository provides a solution for setting up federation in [CloudIL](https://cloudil.co.il/) with Azure Active Directory.
+This repository provides a solution for setting up federation in [Nebius](https://nebius.com/il/) with Azure Active Directory.
 
-The detailed process for configuring Azure AD federation in CloudIL is described in the following documentation:
-- ~~[Authentication using Azure Active Directory](https://cloud.yandex.com/en/docs/organization/operations/federations/integration-azure)~~
+The detailed process for configuring Azure AD federation in Nebius is described in the following documentation:
+- ~~[Authentication using Azure Active Directory](/nebius.com/il/docs/organization/operations/federations/integration-azure)~~
 
 This repository contains an example that allows to set up federation in a semi-automated way.
 
@@ -13,7 +13,7 @@ This repository contains an example that allows to set up federation in a semi-a
 
 The list of prerequisite tools required to configure Azure Arc connectivity includes:
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-- [YC CLI](https://cloudil.co.il/docs/cli/operations/install-cli)
+- [Nebius CLI](https:///nebius.com/il/docs/cli/operations/install-cli)
 - [Terraform client](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 <br/>
@@ -40,7 +40,7 @@ il_cloud_id     = "xxx"
 il_org_id       = "xxx"
 az_tenant_id    = "xxx"
 ```
-6. Check your CloudIL authentication in Terraform `provider.tf` file: it might use `key.json` file or `token`.
+6. Check your Nebius authentication in Terraform `provider.tf` file: it might use `key.json` file or `token`.
 7. Initialize Terraform module and apply it:
 ```
 terraform init
@@ -49,21 +49,21 @@ terraform apply
 
 <br/>
 
-## CloudIL Federation
+## Nebius Federation
 
-Terraform module creates a new Azure enterprise application in the Azure tenant provided, and sets up federation in CloudIL with the Azure tenant. Some post-installation actions are still required, and these are described below.
+Terraform module creates a new Azure enterprise application in the Azure tenant provided, and sets up federation in Nebius with the Azure tenant. Some post-installation actions are still required, and these are described below.
 
 After the Terraform module has been applied, the following output is displayed:
 ```
 il_federation_id = <<EOT
-  CloudIL Federation ID is
+  Nebius Federation ID is
   bpxxxxxxxxxxxx
   ---
   Use the following URL for Identitifier (Entity ID) in Azure AD SAML Configuration:
-  https://auth.cloudil.co.il/federations/bpxxxxxxxxxxxx
+  https://auth.il.nebius.com/federations/bpxxxxxxxxxxxx
   ---
   Use the following URL for Reply URL in Azure AD SAML Configuration:"
-  https://auth.cloudil.co.il/federations/bpxxxxxxxxxxxx
+  https://auth.il.nebius.com/federations/bpxxxxxxxxxxxx
 
 EOT
 ```
@@ -85,7 +85,7 @@ Download the SAML Signing Certificate in Base64 format.
 
 > The link for download will become active after the required URLs are filled.
 
-Upload the certificate to complete the setup in CloudIL using the following command (use the Federation ID from the Terraform output above):
+Upload the certificate to complete the setup in Nebius using the following command (use the Federation ID from the Terraform output above):
 ```
 yc organization-manager federation saml certificate create --federation-id <FEDERATION_ID> --name "az-il-federation" --certificate-file "az-il-federation.cer"
 ```
@@ -94,10 +94,10 @@ yc organization-manager federation saml certificate create --federation-id <FEDE
 
 ## Result
 
-As a result, Azure AD federation is configured with the CloudIL Organization.
-Authentication should be tested by opening the link `https://console.cloudil.co.il/federations/bpxxxxxx` and logging in with your Azure AD user account.
+As a result, Azure AD federation is configured with the Nebius Organization.
+Authentication should be tested by opening the link `https://console.il.nebius.com/federations/bpxxxxxx` and logging in with your Azure AD user account.
 
-> Roles and permissions for CloudIL clouds and folders should be [added](https://console.cloudil.co.il/cloud?section=resource-acl) for the user. The role `resource-manager.clouds.member` is required to access the cloud along-side more service-centric roles – to access the services.
+> Roles and permissions for Nebius clouds and folders should be [added](https://console.il.nebius.com/cloud?section=resource-acl) for the user. The role `resource-manager.clouds.member` is required to access the cloud along-side more service-centric roles – to access the services.
 
 > Users should be allowed to use the federation in Enterprise Application properties:
 

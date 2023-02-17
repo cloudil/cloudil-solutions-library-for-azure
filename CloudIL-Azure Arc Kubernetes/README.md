@@ -1,13 +1,13 @@
-# Azure Arc-enabled CloudIL Managed Kubernetes Cluster
+# Azure Arc-enabled Nebius Managed Kubernetes Cluster
 
-This repository provides an easy-to-use scripts for connecting [CloudIL](https://cloudil.co.il) [Managed Service for Kubernetes](https://cloudil.co.il/docs/managed-kubernetes/) cluster to [Microsoft Azure Arc](https://azure.microsoft.com/services/azure-arc/).
+This repository provides an easy-to-use scripts for connecting [Nebius](https://nebius.com/il/) [Managed Service for Kubernetes](https://nebius.com/il/docs/managed-kubernetes/) cluster to [Microsoft Azure Arc](https://azure.microsoft.com/services/azure-arc/).
 
 
 <br/>
 
 ## About
 
-Azure Arc-enabled Kubernetes allows to attach and configure Kubernetes clusters running anywhere, including Kubernetes clusters running on [CloudIL](https://cloudil.co.il) platform. When you connect a Kubernetes cluster to Azure Arc, it will:
+Azure Arc-enabled Kubernetes allows to attach and configure Kubernetes clusters running anywhere, including Kubernetes clusters running on [Nebius](https://nebius.com/il/) platform. When you connect a Kubernetes cluster to Azure Arc, it will:
 
 - Get an Azure Resource Manager representation with a unique ID.
 - Be placed in an Azure subscription and resource group.
@@ -24,14 +24,14 @@ The process of configuring Azure Arc-enabled Kubernetes cluster is described wit
 This repository contains an example that allows to deploy a new Kubernetes cluster and connect it to Azure Arc with pre-generated scripts.
 
 <br/>
-<img src="images/yc-azure-arc-k8s.jpg?raw=true" width="600px" alt="CloudIL Kubernetes and Azure Arc" title="CloudIL Kubernetes and Azure Arc">
+<img src="images/azure-nebius-arc-k8s.png?raw=true" width="800px" alt="Nebius Kubernetes and Azure Arc" title="Nebius Kubernetes and Azure Arc">
 <br/><br/>
 
 
 After enabling Kubernetes cluster in Azure Arc, [GitOps](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) can be enabled and used to deploy an application from public or private repository.
 
 <br/>
-<img src="images/yc-azure-arc-gitops.jpg?raw=true" width="600px" alt="CloudIL Kubernetes and Azure Arc Gitops" title="CloudIL Kubernetes and Azure Arc Gitops">
+<img src="images/azure-nebius-arc-gitops.png?raw=true" width="800px" alt="Nebius Kubernetes and Azure Arc Gitops" title="Nebius Kubernetes and Azure Arc Gitops">
 <br/><br/>
 
 
@@ -39,7 +39,7 @@ After enabling Kubernetes cluster in Azure Arc, [GitOps](https://docs.microsoft.
 
 The list of prerequisites required to configure Azure Arc connectivity and GitOps includes:
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-- [YC CLI](https://cloudil.co.il/docs/cli/operations/install-cli)
+- [Nebius CLI](https://nebius.com/ildocs/cli/operations/install-cli)
 - [Helm client](https://helm.sh/docs/intro/install/)
 - [Terraform client](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [kubectl client](https://kubernetes.io/docs/tasks/tools/)
@@ -81,7 +81,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPT
 
 <br/>
 
-### CloudIL authentication
+### Nebius authentication
 
 The process of setting up authentication is described below:
 
@@ -122,7 +122,7 @@ az provider show -n Microsoft.ExtendedLocation
 ## Terraform module
 
 Terraform module provides the following results:
-1. Creates a new CloudIL Kubernetes cluster or utilizes the existing one.
+1. Creates a new Nebius Kubernetes cluster or utilizes the existing one.
 2. Creates a resource group in Azure.
 3. Generates the script required to configure Azure Arc connectivity.
 4. Generates the script required to configure GitOps feature in Azure Arc.
@@ -130,7 +130,7 @@ Terraform module provides the following results:
 
 <br/>
 
-### CloudIL provider
+### Nebius provider
 
 Either Oauth token or service account IAM token key file must be used for authentication.
 Please select the suitable option in `providers.tf` file (uncomment one option and un-comment the other).
@@ -169,7 +169,7 @@ In case of Oauth token authentication, the following line containing Oauth token
 il_token           = "OAUTH_TOKEN"
 ```
 
-In case you already have an existing Kubernetes cluster and want to enable it with Azure Arc, please add the following line containing the name of the cluster (as it named in the CloudIL) in the `private.auto.tfvars` file:
+In case you already have an existing Kubernetes cluster and want to enable it with Azure Arc, please add the following line containing the name of the cluster (as it named in the Nebius) in the `private.auto.tfvars` file:
 ```
 il_existing_k8s_cluster_name = "K8S_CLUSTER_NAME"
 ```
@@ -188,7 +188,7 @@ Apply the Terraform configuration:
 terraform apply
 ```
 
-As a result, the new Kubernetes cluster will be created in CloudIL (if there is no existing one), Azure resource group will be created, and two bash-script files will be generated in the `scripts` sub-folder. 
+As a result, the new Kubernetes cluster will be created in Nebius (if there is no existing one), Azure resource group will be created, and two bash-script files will be generated in the `scripts` sub-folder. 
 
 
 <br/>
@@ -203,7 +203,7 @@ Then the generated bash-scripts must be run in sequence.
 
 ### Connect kubectl
 
-Kubectl tool should be connected to CloudIL Kubernetes cluster.
+Kubectl tool should be connected to Nebius Kubernetes cluster.
 This can be achieved with the steps following:
 
 1. Create a new Kubernetes cluster or use an existing one (Kubernetes cluster must have a public IP address for external connectivity).
@@ -239,7 +239,7 @@ As a result of running this script, Azure Arc connectivity will be set up, Clust
 
 ### Results
 
-Kubernetes cluster created in CloudIL is successfully connected to Azure Arc and it's configuration and resources are visible in Azure Arc portal.
+Kubernetes cluster created in Nebius is successfully connected to Azure Arc and it's configuration and resources are visible in Azure Arc portal.
 
 <img src="images/yc-azure-arc-connected.jpg?raw=true" width="600px" alt="Azure Arc Kubernetes Cluster Connected" title="Azure Arc Kubernetes Cluster Connected"><br/>
 <img src="images/yc-azure-arc-workloads.jpg?raw=true" width="600px" alt="Azure Arc Kubernetes Cluster Workloads" title="Azure Arc Kubernetes Cluster Workloads">
@@ -265,7 +265,7 @@ Run the `az_il_arc_gitops_script.sh` script located in `scripts` folder:
 
 This script is pre-filled with the data from Terraform module and can be run as it is.
 As a result of running this script, GitOps configuration will be created, based on public Github repository.
-Contents of Github repository (specifically yaml files containing the `hello` application service and deployment) will be deployed in CloudIL Kubernetes cluster. Any changes in the original application repository will be monitored and transferred to the actual deployment in the Kubernetes cluster.
+Contents of Github repository (specifically yaml files containing the `hello` application service and deployment) will be deployed in Nebius Kubernetes cluster. Any changes in the original application repository will be monitored and transferred to the actual deployment in the Kubernetes cluster.
 
 
 <br/>
