@@ -1,20 +1,20 @@
-# Setting up a VPN between Azure VNET and CloudIL VPC
+# Setting up a VPN between Azure VNET and Nebius VPC
 
 ## Overview and target scenario
-If you need to deploy a Site-to-Site VPN connection between CloudIL and Microsoft Azure, you can use this example and module to set it up.
+If you need to deploy a Site-to-Site VPN connection between Nebius and Microsoft Azure, you can use this example and module to set it up.
 
 ## Prerequisites
 
 The list of prerequisites required to configure VPN Scenario: 
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-- [YC CLI](https://cloudil.co.il/docs/cli/operations/install-cli)
+- [Nebius CLI](https://nebius.com/il/docs/cli/operations/install-cli)
 - [Terraform client](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
-## CloudIL СLI Installation
-To automate CloudIL credentials provisioning (iam-token) install YC-CLI using the following guide [YC CLI](https://cloudil.co.il/docs/cli/operations/install-cli)
+## Nebius СLI Installation
+To automate Nebius credentials provisioning (iam-token) install CLI using the following guide [CLI](https://nebius.com/il/docs/cli/operations/install-cli)
 
 
-## Authorize Yandex Cloud Credentials for Provider:
+## Authorize Nebius Credentials for Provider:
 ```bash
 export YC_TOKEN=$(yc iam create-token)
 export YC_CLOUD_ID=$(yc config get cloud-id)
@@ -67,15 +67,15 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPT
 
 #### Example of usage
 ```HCL
-module "azure-cloudil-vpn" {
+module "azure-nebius-vpn" {
 source = "../modules/vpn"
 location = "westeurope"
 rgname = "my_azure_rg"
-cloudil_vpc_id = "enpki4ukxxxxxxxxxxx"
+nebius_vpc_id = "enpki4ukxxxxxxxxxxx"
 azure_vnet_name = "vpn_test_vnet"
 public_key_path = "~/.ssh/id_rsa.pub"
 zone = "il1-a"
-cloudil_subnet_range = "192.168.0.0/24"
+nebius_subnet_range = "192.168.0.0/24"
 azure_subnet_range = ["10.151.0.0/24"]
 azure_gateway_subnet_range = ["10.0.255.0/24"]
 ```
