@@ -18,7 +18,7 @@ Many architectures that you will see below are built upon a powerful and compreh
 ### Manage and govern multi-cloud environments with a single control plane
 This is an example of organization with several servers deployed in multiple locations. It is also using DevOps practices which result in an unknown number of servers that are connected to the corporate networks but do not conform to identity and governance requirements. This organization needs to gain some control of their environment and ensure the compliance requirements are met for audit purposes.
 
-![image](./pics/azure-nebius-arc-enabled.jpg)
+![image](./pics/azure-nebius-arc-enabled.png)
 
 [Azure Arc-enabled servers](https://docs.microsoft.com/en-us/azure/azure-arc/servers/overview) enables you to manage your Windows and Linux physical servers and virtual machines hosted outside of Azure, on your corporate network, or other cloud provider. This management experience is designed to be consistent with how you manage native Azure virtual machines. When a hybrid machine is connected to Azure, it becomes a connected machine and is treated as a resource in Azure, so you can benefit from standard Azure constructs, such as Azure Policy and applying tags. 
 
