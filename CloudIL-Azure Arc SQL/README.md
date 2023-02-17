@@ -64,7 +64,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPT
 
 The process of setting up authentication is described below:
 
-1. Login to YC CLI:
+1. Login to Nebius CLI:
 ```
 yc init
 ```
