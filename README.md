@@ -23,9 +23,9 @@ This is an example of organization with several servers deployed in multiple loc
 [Azure Arc-enabled servers](https://docs.microsoft.com/en-us/azure/azure-arc/servers/overview) enables you to manage your Windows and Linux physical servers and virtual machines hosted outside of Azure, on your corporate network, or other cloud provider. This management experience is designed to be consistent with how you manage native Azure virtual machines. When a hybrid machine is connected to Azure, it becomes a connected machine and is treated as a resource in Azure, so you can benefit from standard Azure constructs, such as Azure Policy and applying tags. 
 
 Examples to help build this architecture:
-* [Azure Arc-enabled SQL server](/Nebius-Azure%20Arc%20SQL/)
-* [Setting up federation in Nebius through Azure AD](/Nebius-Azure%20AD%20Federation/)
-* [Setting up a VPN between Azure VNET and Nebius VPC](/Nebius-Azure%20VPN/)
+* [Azure Arc-enabled SQL server](/CloudIL-Azure%20Arc%20SQL/)
+* [Setting up federation in Nebius through Azure AD](/CloudIL-Azure%20AD%20Federation/)
+* [Setting up a VPN between Azure VNET and Nebius VPC](/CloudIL-Azure%20VPN/)
 
 ### At-scale multi-cloud Kubernetes app management
 Here is an organization which have several branches and have in-office applications. They’d like to move all these applications to containers running on Kubernetes clusters but they are not sure how they can uniformly deploy and configure these applications across multiple locations. They need to be able to onboard a new location that can run with the specific applications that this office needs, apply governance, monitor these clusters as well as integrate DevOps practices.
@@ -35,9 +35,9 @@ Here is an organization which have several branches and have in-office applicati
 This is where Azure Arc-enabled Kubernetes comes into play. You can project the Kubernetes clusters to Azure, so you can organize and view all your clusters in Azure (similar to Azure Arc-enabled servers) but you can also configure them uniformly, called zero touch configuration. This practice is called GitOps, which is a Kubernetes operating model. In GitOps, the configurations are declared and stored in a Git repo and our Arc agents running on the cluster continuously monitor this repo for updates or changes and automatically pulls down these changes to the cluster.
 
 Examples to help build this architecture:
-* [Azure Arc-enabled Nebius Managed Kubernetes Cluster](/Nebius-Azure%20Arc%20Kubernetes/)
-* [Setting up federation in Nebius through Azure AD](/Nebius-Azure%20AD%20Federation/)
-* [Setting up a VPN between Azure VNET and Nebius VPC](/Nebius-Azure%20VPN/)
+* [Azure Arc-enabled Nebius Managed Kubernetes Cluster](/CloudIL-Azure%20Arc%20Kubernetes/)
+* [Setting up federation in Nebius through Azure AD](/CloudIL-Azure%20AD%20Federation/)
+* [Setting up a VPN between Azure VNET and Nebius VPC](/CloudIL-Azure%20VPN/)
 
 ### Run data and application services anywhere
 One company wants to build new applications or modernize existing applications and infrastructure so they can capture and analyze data at remote locations worldwide and deliver onsite, real-time insights with no latency.
@@ -50,18 +50,18 @@ Azure Arc makes it possible to run [Azure data services](https://docs.microsoft.
 You can also run [App Service, Functions, and Logic Apps](https://docs.microsoft.com/en-us/azure/app-service/overview-arc-integration) on an Azure Arc-enabled Kubernetes cluster that can be on-premises or hosted in a different cloud. This approach lets app developers take advantage of the features of App Service. At the same time, it lets their IT administrators maintain corporate compliance and safeguard their prior investments in other cloud providers or hardware by running App Service on existing Kubernetes clusters.
 
 Examples to help build this architecture:
-* [Setting up federation in Nebius through Azure AD](/Nebius-Azure%20AD%20Federation/)
-* [Setting up a VPN between Azure VNET and Nebius VPC](/Nebius-Azure%20VPN/)
+* [Setting up federation in Nebius through Azure AD](/CloudIL-Azure%20AD%20Federation/)
+* [Setting up a VPN between Azure VNET and Nebius VPC](/CloudIL-Azure%20VPN/)
 
 
 ## Technical implementation of common scenarios
 
 Following are links on all technical scenarios mentioned above in the use cases:
-#### 1. [Setting up federation in Nebius through Azure AD](/Nebius-Azure%20AD%20Federation/)
-#### 2. [Setting up a VPN between Azure VNET and Nebius VPC](/Nebius-Azure%20VPN/)
-#### 3. [Azure Arc-enabled SQL server](/Nebius-Azure%20Arc%20SQL/)
+#### 1. [Setting up federation in Nebius through Azure AD](/CloudIL-Azure%20AD%20Federation/)
+#### 2. [Setting up a VPN between Azure VNET and Nebius VPC](/CloudIL-Azure%20VPN/)
+#### 3. [Azure Arc-enabled SQL server](/CloudIL-Azure%20Arc%20SQL/)
 You can enable SQL Server on Azure Arc-enabled servers. It extends Azure services to SQL Server instances hosted outside of Azure; in your datacenter, on the edge, or in a multi-cloud environment.
-#### 4. [Azure Arc-enabled Nebius Managed Kubernetes Cluster](/Nebius-Azure%20Arc%20Kubernetes/)
+#### 4. [Azure Arc-enabled Nebius Managed Kubernetes Cluster](/CloudIL-Azure%20Arc%20Kubernetes/)
 Azure Arc enabled Kubernetes manages cluster configuration and application deployment on any Kubernetes cluster. It adopts a GitOps methodology, so customers define their applications and cluster configurations in source control, in this case, Git. Azure Arc-enabled Kubernetes works with any Cloud Native Computing Foundation (CNCF) certified Kubernetes clusters.
 
 
