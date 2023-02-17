@@ -24,14 +24,14 @@ The process of configuring Azure Arc-enabled Kubernetes cluster is described wit
 This repository contains an example that allows to deploy a new Kubernetes cluster and connect it to Azure Arc with pre-generated scripts.
 
 <br/>
-<img src="images/azure-nebius-arc-k8s.png?raw=true" width="600px" alt="Nebius Kubernetes and Azure Arc" title="Nebius Kubernetes and Azure Arc">
+<img src="images/azure-nebius-arc-k8s.png?raw=true" width="800px" alt="Nebius Kubernetes and Azure Arc" title="Nebius Kubernetes and Azure Arc">
 <br/><br/>
 
 
 After enabling Kubernetes cluster in Azure Arc, [GitOps](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster) can be enabled and used to deploy an application from public or private repository.
 
 <br/>
-<img src="images/azure-nebius-arc-gitops.png?raw=true" width="600px" alt="Nebius Kubernetes and Azure Arc Gitops" title="Nebius Kubernetes and Azure Arc Gitops">
+<img src="images/azure-nebius-arc-gitops.png?raw=true" width="800px" alt="Nebius Kubernetes and Azure Arc Gitops" title="Nebius Kubernetes and Azure Arc Gitops">
 <br/><br/>
 
 
